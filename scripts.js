@@ -1,6 +1,6 @@
 // !!!!!!!!!!!!!!!WEBSOCKET SECTION!!!!!!!!!!!!!!!
 // var socketio = io.connect("http://10.150.50.81:8081/");
-var socketio = io.connect("http://10.150.51.175:8081/");
+var socketio = io.connect("http://10.150.51.175:8080/");
 
 // socketio.on("users", (socketUsers)=>{
 //     console.log(socketUsers);
