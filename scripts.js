@@ -38,7 +38,7 @@ var mousePosition = {};
 var lastMousePosition = null;
 var colorPicker = document.getElementById('color-picker');
 var thicknessPicker = document.getElementById("thickness");
-var placeBase = document.getElementById("placeBase");
+// var placeBase = document.getElementById("placeBase");
 
 colorPicker.addEventListener('change', (event)=>{
     color = colorPicker.value;
@@ -48,9 +48,9 @@ thicknessPicker.addEventListener('change', (event)=>{
     thickness = thicknessPicker.value
 })
 
-placeBase.addEventListener("onkeydown", (event)=>{
-    placeBase = "<img src='https://www.base64-image.de/build/img/mr-base64-482fa1f767.png' />"
-})
+// placeBase.addEventListener("onkeydown", (event)=>{
+//     placeBase = "<img src='https://www.base64-image.de/build/img/mr-base64-482fa1f767.png' />"
+// })
 
 canvas.addEventListener("mousedown", (event)=>{
     // console.log(event);
