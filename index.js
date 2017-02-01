@@ -1,22 +1,23 @@
 // console.log("Albus Dumbledore")
 
+
+
 var http = require("http");
 var fs = require("fs");
 
 
 var server = http.createServer((req, res)=>{
-    console.log("Someone connected via HTTP");
-    fs.readFile("index.html", "utf-8", (error, fileData)=>{
-        if(error){
-
-            res.writeHead(500, {"content-type":"text/html"});
-            res.end(error);
-        }else{
-
-            res.writeHead(200,{"content-type":"text/html"});
-            res.end(fileData);
-        }
-    });
+    // console.log("Someone connected via HTTP");
+    // fs.readFile("index.html", "utf-8", (error, fileData)=>{
+    //     if(error){
+    //         res.writeHead(500, {"content-type":"text/html"});
+    //         res.end(error);
+    //     }else{
+    //
+    //         res.writeHead(200,{"content-type":"text/html"});
+    //         res.end(fileData);
+    //     }
+    // });
 });
 
 // Include the server version of socketIO and assignt it to a variable
@@ -30,7 +31,7 @@ io.sockets.on("connect", (socket)=>{
     console.log("Someone connected by Socket")
     socketUsers.push({
         socketID: socket.id,
-        name: "A girl has no name"
+
     });
     io.sockets.emit("users", socketUsers);
 
@@ -40,6 +41,11 @@ io.sockets.on("connect", (socket)=>{
             message: messageObject.message,
             date: new Date()
         })
+    });
+    socket.on("drawingToServer", (drawingData)=>{
+        if(drawingData.lastMousePosition !== null){
+            io.sockets.emit("drawingToClients", drawingData)
+        }
     })
 
 });

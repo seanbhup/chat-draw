@@ -1,3 +1,16 @@
 body{
-    color: green;
+    color: #484538;
+}
+canvas{
+    border:5px inset #56A3A6;
+    background-color: #D4EAC8;
+    /*background-image: url('https://www.base64-image.de/build/img/mr-base64-482fa1f767.png');*/
+}
+
+.chat{
+    border: 1px ridge green
+}
+
+#place-base{
+    color:blue;
 }

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-        <!-- <link rel="stylesheet" type="text/css" href="/index.css"> -->
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/index.css">
 
         <meta charset="utf-8">
 
@@ -11,49 +12,38 @@
     </head>
     <body>
 
-        <h1>Albus Dumbledore is your father</h1>
+        <h1 style="text-align:center">Albus Dumbledore is your father</h1>
 
-        <div>
+        <div class="chat" style="text-align:center">
             <h3>Enter your message here</h3>
-            <input type="text" id="chat-message" />
-            <input type="button" value="Send" onclick="sendChatMessage()" />
+            <form onsubmit="sendChatMessage()">
+                <input type="text" id="chat-message" />
+                <input class="btn btn-primary" type="submit" value="Send" />
+            </form>
         </div>
 
-        <div id="userNames">
+        <div class="" style="text-align:center" id="userNames">
             <!-- Usernames will go here as they show up -->
         </div>
 
-        <div id="userChats">
+        <div class="" style="text-align:center" id="userChats">
             <!-- userchats will go here as they show up -->
+        </div>
+
+        <div class="tool-bar" style="text-align:center">
+            <input type="color" id="color-picker" />
+            <label>Choose your marker thickness</label>
+            <input type="number" id="thickness" placeholder="10" />
+            <input type="button" id="place-base" placeholder="Place A Base" />
+        </div>
+
+        <div class="" style="text-align:center">
+            <canvas id="canvas" width="500px" height="500px"></canvas>
         </div>
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
 
-        <script type="text/javascript">
-        // console.log(io);
-        var socketio = io.connect("http://127.0.0.1:8080");
-
-        socketio.on("users", (socketUsers)=>{
-            console.log(socketUsers);
-            var newHTML = "";
-            socketUsers.map((currSocket, index)=>{
-                newHTML += "<li class=user>" + currSocket.name + "</li>";
-            });
-            document.getElementById("userNames").innerHTML = newHTML;
-        });
-
-        socketio.on("messageToClient",(messageObject)=>{
-            document.getElementById("userChats").innerHTML += "<div class='message'>" + messageObject.message + " -- " + messageObject.date + "</div>";
-        });
-
-        function sendChatMessage(){
-            var messageToSend = document.getElementById("chat-message").value;
-            socketio.emit("messageToServer", {
-                message: messageToSend,
-                name: "A girl still has no name..."
-            });
-        }
-
-        </script>
+        <!-- <script type="text/javascript" src="http://10.150.50.81:8081//scripts.js"></script> -->
+        <script type="text/javascript" src="http://localhost:8081/scripts.js"></script>
     </body>
 </html>
